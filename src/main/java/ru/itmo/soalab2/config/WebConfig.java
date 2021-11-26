@@ -15,18 +15,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableWebSecurity
 public class WebConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
 
-
-//    @Bean
-//    @Override
-//    public AuthenticationManager authenticationManagerBean() throws Exception {
-//        return super.authenticationManagerBean();
-//    }
-
     //включаем cors-запросы, если тестим на локалке
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("http://localhost:4200").allowedMethods("*");
+                .allowedOrigins("*").allowedMethods("*");
+//                .allowedOrigins("http://localhost:4200").allowedMethods("*");
     }
 
 
@@ -45,19 +39,6 @@ public class WebConfig extends WebSecurityConfigurerAdapter implements WebMvcCon
                 .csrf().disable()
                 //не сохранять состояние
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-//                .and()
-//                //для запросов get и post с url /api/points/* требуется аутентификация
-//                .authorizeRequests()
-//                .antMatchers(HttpMethod.GET, "/api/points/**").authenticated()
-//                .antMatchers(HttpMethod.POST, "/api/points/**").authenticated()
-//                .antMatchers(HttpMethod.PUT, "/api/points/**").authenticated()
-//                .antMatchers(HttpMethod.DELETE, "/api/points/**").authenticated()
-//                .antMatchers(HttpMethod.POST, "/api/users/logout").authenticated()
-//                //для остальных запросов аутентификация не требуется
-//                .anyRequest().permitAll()
-//                .and()
-//                //применяем систему аутентификации
-//                .apply(new SecurityConfigurer(tokenProvider));
     }
 
 
