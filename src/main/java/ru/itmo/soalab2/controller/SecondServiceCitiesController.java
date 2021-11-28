@@ -7,11 +7,11 @@ import ru.itmo.soalab2.services.CityService;
 
 @RestController
 @RequestMapping("/api/route")
-public class CitiesController {
+public class SecondServiceCitiesController {
 
     private CityService cityService;
 
-    CitiesController(CityRepository cityRepository) {
+    SecondServiceCitiesController(CityRepository cityRepository) {
         this.cityService = new CityService(cityRepository);
     }
 
